@@ -229,6 +229,31 @@
   position: relative;
 }
 
+/* Desktop: remove a coluna vazia */
+@media (min-width: 481px) {
+  .header__container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 16px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  /* esconder o toggle sem remover da estrutura do grid */
+  .header__toggle {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* manter a nav centralizada */
+  .header__nav {
+    justify-content: center;
+  }
+  /* manter o lang à direita sem encostar */
+  .header__lang {
+    justify-content: flex-end;
+  }
+}
 /* ====== Mobile drawer (até 480px) ====== */
 @media (max-width: 480px) {
   .header {
@@ -238,9 +263,13 @@
     right: 0;
     z-index: 1000;
   }
+  .header__container {
+    grid-template-columns: 1fr auto 1fr;
+  }
   /* botão hamburguer */
   .header__toggle {
     display: flex;
+    visibility: visible;
     /* garante que apareça no mobile */
     position: fixed;
     top: 12px;
